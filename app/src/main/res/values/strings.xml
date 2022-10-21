@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">LoginActivityTask</string>
+    <string name="welcome_to_android_str">Welcome To Android</string>
+    <string name="welcome_str">Welcome</string>
+    <string name="to_str">To</string>
+    <string name="android_str">Android</string>
+    <string name="title_activity_sign_up_page">SignUpPage</string>
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="welcome">"Welcome !"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
+    <string name="email_str">Email</string>
+    <string name="password_str">Password</string>
+    <string name="login_str">Login</string>
+    <string name="signup_str">Sign-Up</string>
+    <string name="login_page_heading_str">login page</string>
+    <string name="signup_page_heading_str">Sign-Up Page</string>
+    <string name="username_str">Username</string>
+    <string name="name_str">Name</string>
+</resources>
