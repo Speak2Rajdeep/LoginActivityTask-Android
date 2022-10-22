@@ -21,4 +21,7 @@
     <string name="signup_page_heading_str">Sign-Up Page</string>
     <string name="username_str">Username</string>
     <string name="name_str">Name</string>
+    <string name="generateusername_str">Generate Username</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

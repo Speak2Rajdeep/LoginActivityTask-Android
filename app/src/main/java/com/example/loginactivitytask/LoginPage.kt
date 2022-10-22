@@ -1,7 +1,9 @@
 package com.example.loginactivitytask
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
@@ -11,7 +13,7 @@ import androidx.appcompat.app.AppCompatActivity
 class LoginPage : AppCompatActivity() {
 
 
-    @SuppressLint("MissingInflatedId")
+    @SuppressLint("MissingInflatedId", "CommitPrefEdits")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login_page)
@@ -20,6 +22,8 @@ class LoginPage : AppCompatActivity() {
         val signupbtn = findViewById<Button>(R.id.signup_btn)
         val username = findViewById<EditText>(R.id.usernamelogin_str)
         val password = findViewById<EditText>(R.id.passwordlogin_str)
+        var str_username: String
+        var str_password: String
 
 
         loginbtn.setOnClickListener {
@@ -29,27 +33,37 @@ class LoginPage : AppCompatActivity() {
             ) {
                 Toast.makeText(this@LoginPage, "Fill all Details Properly!!", Toast.LENGTH_SHORT)
                     .show()
-
             } else {
 
                 //Storing the Data to a Variable
-                val str_username: String = username.text.toString()
-                val str_password: String = password.text.toString()
+                str_username = username.text.toString().trim()
+                str_password = password.text.toString().trim()
+                val sharedPreferences: SharedPreferences = this.getSharedPreferences("sharedPref",
+                    Context.MODE_PRIVATE)
 
-                //Add Shared Preference to Store data
-                Toast.makeText(
-                    this@LoginPage, "Login Button Clicked on Login Page", Toast.LENGTH_SHORT
-                ).show()
+                val usernameKey = sharedPreferences.getString("username_key","Default")
+                val passwordKey =sharedPreferences.getString("password_key","Default")
+                if(str_username != usernameKey || str_password != passwordKey){
+                    Toast.makeText(this@LoginPage, "Please enter Proper Credentials!!", Toast.LENGTH_SHORT).show()
+                }
+                else{
+                    Toast.makeText(this@LoginPage, "Login Successful!!", Toast.LENGTH_SHORT).show()
+                    val intent = Intent(this@LoginPage, TabLayout::class.java)
+                    startActivity(intent)
+
+                }
             }
         }
 
         signupbtn.setOnClickListener {
             //Redirect to SignUp Page
             Toast.makeText(
-                this@LoginPage, "SignUp Button Clicked on Login Page", Toast.LENGTH_SHORT
+                this@LoginPage, "Moving to Sign-Up Page", Toast.LENGTH_SHORT
             ).show()
             val intent = Intent(this@LoginPage, SignUpPage::class.java)
             startActivity(intent)
         }
+
+
     }
 }
