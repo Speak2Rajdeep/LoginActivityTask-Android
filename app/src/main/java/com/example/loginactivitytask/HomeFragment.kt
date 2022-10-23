@@ -1,10 +1,19 @@
 package com.example.loginactivitytask
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -20,6 +29,9 @@ class HomeFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
+    private lateinit var myAdapter: MyAdapter
+    private lateinit var recyclerView: RecyclerView
+    private var responseBody: ArrayList<MyDataItem> = ArrayList()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,23 +49,45 @@ class HomeFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_home, container, false)
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment HomeFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            HomeFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        //This Method is used here to put the datas from the getMyData() Method to the RecyclerView
+        recyclerView = view.findViewById(R.id.recyclerhome)
+
+        recyclerView.apply {
+            val layoutManager = LinearLayoutManager(activity)
+            this.layoutManager = layoutManager
+            this.setHasFixedSize(true)
+            myAdapter = MyAdapter(context, responseBody)
+            this.adapter = myAdapter
+            getMyData()
+        }
+    }
+
+    private fun getMyData() {
+        //This method fetches all the Data from the API through Retrofit Library
+        //Creating Retrofit Object
+        val retrofitBuilder =
+            Retrofit.Builder().addConverterFactory(GsonConverterFactory.create()).baseUrl(baseURL)
+                .build().create(ApiInterface::class.java)
+
+        val retrofitData = retrofitBuilder.getData()
+
+        //Calling Retrofit : Enqueue method for queueing the Response
+        retrofitData.enqueue(object : Callback<List<MyDataItem>> {
+            @SuppressLint("NotifyDataSetChanged")
+            override fun onResponse(
+                call: Call<List<MyDataItem>>, response: Response<List<MyDataItem>>
+            ) {
+                //Adding Responses to the Response Body and Setting the Visibility of the Progressbar
+                response.body()!!.let { responseBody.addAll(it) }
+                myAdapter.notifyDataSetChanged()
             }
+
+            override fun onFailure(call: Call<List<MyDataItem>>, t: Throwable) {
+                //On Failure Make Toast with Messages
+                Toast.makeText(activity, "OnFailure Method Called!", Toast.LENGTH_SHORT).show();
+            }
+        })
     }
 }

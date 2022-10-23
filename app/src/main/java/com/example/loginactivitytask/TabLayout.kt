@@ -12,7 +12,6 @@ class TabLayout : AppCompatActivity() {
 
     private lateinit var binding : ActivityTabLayoutBinding
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityTabLayoutBinding.inflate(layoutInflater)
@@ -24,12 +23,10 @@ class TabLayout : AppCompatActivity() {
                 R.id.documentmenu -> switchFragment(DocumentFragment())
                 R.id.profilemenu -> switchFragment(ProfileFragment())
                 else->{
-                    Toast.makeText(this@TabLayout, "No Fragment Selected!!", Toast.LENGTH_SHORT)
-                        .show()
+                    Toast.makeText(this@TabLayout, "No Fragment Selected!!", Toast.LENGTH_SHORT).show()
                 }
             }
             true
-
         }
     }
 
@@ -38,6 +35,5 @@ class TabLayout : AppCompatActivity() {
         val fragmentTransaction = fragmentManager.beginTransaction()
         fragmentTransaction.replace(R.id.framelayout,fragment)
         fragmentTransaction.commit()
-
     }
 }
