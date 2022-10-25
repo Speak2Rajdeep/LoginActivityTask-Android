@@ -38,4 +38,9 @@ class MainActivity : AppCompatActivity() {
             }
         }, 2000)
     }
+
+    override fun onRestart() {
+        super.onRestart()
+        isChecked = true
+    }
 }

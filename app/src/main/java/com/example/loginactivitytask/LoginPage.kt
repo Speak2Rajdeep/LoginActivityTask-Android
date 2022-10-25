@@ -7,6 +7,7 @@ import android.content.SharedPreferences
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 
@@ -19,7 +20,7 @@ class LoginPage : AppCompatActivity() {
         setContentView(R.layout.activity_login_page)
 
         val loginbtn = findViewById<Button>(R.id.login_btn)
-        val signupbtn = findViewById<Button>(R.id.signup_btn)
+        val signupbtn = findViewById<TextView>(R.id.signup_btn)
         val username = findViewById<EditText>(R.id.usernamelogin_str)
         val password = findViewById<EditText>(R.id.passwordlogin_str)
         var str_username: String
@@ -38,19 +39,20 @@ class LoginPage : AppCompatActivity() {
                 //Storing the Data to a Variable
                 str_username = username.text.toString().trim()
                 str_password = password.text.toString().trim()
-                val sharedPreferences: SharedPreferences = this.getSharedPreferences("sharedPref",
-                    Context.MODE_PRIVATE)
+                val sharedPreferences: SharedPreferences = this.getSharedPreferences(
+                    "sharedPref", Context.MODE_PRIVATE
+                )
 
-                val usernameKey = sharedPreferences.getString("username_key","Default")
-                val passwordKey =sharedPreferences.getString("password_key","Default")
-                if(str_username != usernameKey || str_password != passwordKey){
-                    Toast.makeText(this@LoginPage, "Please enter Proper Credentials!!", Toast.LENGTH_SHORT).show()
-                }
-                else{
+                val usernameKey = sharedPreferences.getString("username_key", "Default")
+                val passwordKey = sharedPreferences.getString("password_key", "Default")
+                if (str_username != usernameKey || str_password != passwordKey) {
+                    Toast.makeText(
+                        this@LoginPage, "Please enter Proper Credentials!!", Toast.LENGTH_SHORT
+                    ).show()
+                } else {
                     Toast.makeText(this@LoginPage, "Login Successful!!", Toast.LENGTH_SHORT).show()
                     val intent = Intent(this@LoginPage, TabLayout::class.java)
                     startActivity(intent)
-
                 }
             }
         }
@@ -63,7 +65,5 @@ class LoginPage : AppCompatActivity() {
             val intent = Intent(this@LoginPage, SignUpPage::class.java)
             startActivity(intent)
         }
-
-
     }
 }

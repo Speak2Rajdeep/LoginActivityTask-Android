@@ -6,6 +6,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ProgressBar
+import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -29,9 +31,11 @@ class HomeFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
-    private lateinit var myAdapter: MyAdapter
+    private lateinit var myAdapter: MyAdapterHome
     private lateinit var recyclerView: RecyclerView
     private var responseBody: ArrayList<MyDataItem> = ArrayList()
+    lateinit var progressBar: ProgressBar
+    lateinit var loading: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -53,12 +57,14 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         //This Method is used here to put the datas from the getMyData() Method to the RecyclerView
         recyclerView = view.findViewById(R.id.recyclerhome)
+        progressBar = view.findViewById(R.id.progress)
+        loading = view.findViewById(R.id.loading)
 
         recyclerView.apply {
             val layoutManager = LinearLayoutManager(activity)
             this.layoutManager = layoutManager
             this.setHasFixedSize(true)
-            myAdapter = MyAdapter(context, responseBody)
+            myAdapter = MyAdapterHome(context, responseBody)
             this.adapter = myAdapter
             getMyData()
         }
@@ -82,6 +88,8 @@ class HomeFragment : Fragment() {
                 //Adding Responses to the Response Body and Setting the Visibility of the Progressbar
                 response.body()!!.let { responseBody.addAll(it) }
                 myAdapter.notifyDataSetChanged()
+                progressBar.visibility = View.GONE
+                loading.visibility = View.GONE
             }
 
             override fun onFailure(call: Call<List<MyDataItem>>, t: Throwable) {

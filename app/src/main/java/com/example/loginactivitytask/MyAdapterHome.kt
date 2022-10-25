@@ -9,8 +9,8 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class MyAdapter(val context: Context, val userList: List<MyDataItem>) :
-    RecyclerView.Adapter<MyAdapter.ViewHolder>() {
+class MyAdapterHome(val context: Context, val userList: List<MyDataItem>) :
+    RecyclerView.Adapter<MyAdapterHome.ViewHolder>() {
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         //Creating Variables and Initializing them via init block
@@ -27,10 +27,9 @@ class MyAdapter(val context: Context, val userList: List<MyDataItem>) :
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         //Passing the XML and Converting it to view
 
-        var itemView = LayoutInflater.from(context).inflate(R.layout.single_row, parent, false)
+        var itemView = LayoutInflater.from(context).inflate(R.layout.single_row_home, parent, false)
         //Calling the Holder class and passing the itemview
         return ViewHolder(itemView)
-
 
     }
 

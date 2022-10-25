@@ -1,10 +1,13 @@
 package com.example.loginactivitytask
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ProgressBar
+import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -34,6 +37,8 @@ class DocumentFragment : Fragment() {
     private lateinit var myAdapter: MyAdapter
     private lateinit var recyclerView: RecyclerView
     private var responseBody: ArrayList<MyDataItem> = ArrayList()
+    lateinit var progressBar: ProgressBar
+    lateinit var loading: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -54,6 +59,8 @@ class DocumentFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         //This Method is used here to put the data from the getMyData() Method to the RecyclerView
         recyclerView = view.findViewById(R.id.recycler)
+        progressBar = view.findViewById(R.id.progress)
+        loading = view.findViewById(R.id.loading)
 
         recyclerView.apply {
             val layoutManager = LinearLayoutManager(activity)
@@ -83,6 +90,8 @@ class DocumentFragment : Fragment() {
                 //Adding Responses to the Response Body and Setting the Visibility of the Progressbar
                 response.body()!!.let { responseBody.addAll(it) }
                 myAdapter.notifyDataSetChanged()
+                progressBar.visibility = View.GONE
+                loading.visibility = View.GONE
             }
 
             override fun onFailure(call: Call<List<MyDataItem>>, t: Throwable) {

@@ -1,5 +1,6 @@
 package com.example.loginactivitytask
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -23,7 +24,7 @@ class TabLayout : AppCompatActivity() {
                 R.id.documentmenu -> switchFragment(DocumentFragment())
                 R.id.profilemenu -> switchFragment(ProfileFragment())
                 else->{
-                    Toast.makeText(this@TabLayout, "No Fragment Selected!!", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@TabLayout, "No Option/Fragment Selected!!", Toast.LENGTH_SHORT).show()
                 }
             }
             true
@@ -31,9 +32,13 @@ class TabLayout : AppCompatActivity() {
     }
 
     private fun switchFragment(fragment : Fragment){
+
+        //Here we Replace Activity to Fragment
         val fragmentManager = supportFragmentManager
         val fragmentTransaction = fragmentManager.beginTransaction()
         fragmentTransaction.replace(R.id.framelayout,fragment)
         fragmentTransaction.commit()
     }
+
+
 }

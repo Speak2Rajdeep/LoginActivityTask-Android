@@ -5,6 +5,22 @@
     android:layout_height="match_parent"
     tools:context=".DocumentFragment">
 
+    <ProgressBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:id="@+id/progress"/>
+    <TextView
+        android:id="@+id/loading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="50sp"
+        android:text="@string/loading_please_wait_str"
+        android:textColor="@color/black"
+        android:textSize="20sp" />
+
+
 
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
