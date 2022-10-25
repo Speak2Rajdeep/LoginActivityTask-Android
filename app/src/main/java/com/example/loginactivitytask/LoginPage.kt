@@ -11,9 +11,14 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 
+    /**
+     *  1. This Page Provides the Basic validation for Login.
+     *  2. All Login Checking has been Implemented Here.
+     *  3. The proper Credentials are coming through Shared Preference.
+     *  4. Sign-Up Button navigates to Sign-Up page.
+     */
+
 class LoginPage : AppCompatActivity() {
-
-
     @SuppressLint("MissingInflatedId", "CommitPrefEdits")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

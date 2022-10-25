@@ -1,32 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/cardview_shadow_start_color"
     tools:context=".HomeFragment">
 
     <ProgressBar
+        android:id="@+id/progress"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:indeterminateTint="#FF0000"
+        android:indeterminateTint="#FF0000" />
 
-        android:id="@+id/progress"/>
     <TextView
         android:id="@+id/loading"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50sp"
         android:layout_gravity="center"
+        android:layout_marginTop="50sp"
         android:text="@string/loading_please_wait_str"
         android:textColor="@color/black"
         android:textSize="20sp" />
 
-
-
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerhome"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/recyclerhome"
-        tools:listitem="@layout/single_row_home" />
+        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager" />
 </FrameLayout>

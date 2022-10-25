@@ -30,10 +30,10 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="16dp"
+        android:contentDescription="@string/top_icon"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_person"
-        android:contentDescription="@string/top_icon" />
+        app:srcCompat="@drawable/ic_person" />
 
     <TextView
         android:id="@+id/topText"
@@ -65,8 +65,7 @@
         android:padding="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/view5"
-        />
+        app:layout_constraintTop_toBottomOf="@+id/view5" />
 
     <EditText
         android:id="@+id/passwordlogin_str"
@@ -93,7 +92,7 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="32dp"
-        android:background="@drawable/round_bg"
+        android:background="@drawable/round_bg_login"
         android:text="@string/login"
         android:textColor="@android:color/white"
         android:textSize="18sp"
@@ -102,8 +101,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/passwordlogin_str" />
 
-
-
     <Button
         android:id="@+id/signup_btn"
         android:layout_width="wrap_content"
@@ -111,9 +108,9 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="100dp"
         android:layout_marginEnd="32dp"
+        android:backgroundTint="@color/white"
         android:text="@string/new_user_register_now"
         android:textColor="@color/colorPrimary"
-        android:backgroundTint="@color/white"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"

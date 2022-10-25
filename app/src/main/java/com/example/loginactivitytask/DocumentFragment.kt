@@ -1,7 +1,6 @@
 package com.example.loginactivitytask
 
 import android.annotation.SuppressLint
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -25,10 +24,9 @@ private const val ARG_PARAM2 = "param2"
 const val baseURL = "https://jsonplaceholder.typicode.com/"
 
 /**
- * A simple [Fragment] subclass.
- * Use the [DocumentFragment.newInstance] factory method to
- * create an instance of this fragment.
+ *  1. This Fragment shows Recycler View with Linear Layout.
  */
+
 class DocumentFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
@@ -72,8 +70,8 @@ class DocumentFragment : Fragment() {
         }
     }
 
+    //This method fetches all the Data from the API through Retrofit Library
     private fun getMyData() {
-        //This method fetches all the Data from the API through Retrofit Library
         //Creating Retrofit Object
         val retrofitBuilder =
             Retrofit.Builder().addConverterFactory(GsonConverterFactory.create()).baseUrl(baseURL)

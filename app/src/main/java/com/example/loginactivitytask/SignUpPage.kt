@@ -12,6 +12,14 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 
+/**
+ *  1. This Page Provides the Basic validation for Sign-Up.
+ *  2. All Data are Stored using Shared Preference.
+ *  3. Username will be Auto Generated with " Name+'@123' ".
+ *  4. Login Button navigates to Login page.
+ *  5. After Sign-In, User Will be automatically move to Login Page.
+ */
+
 class SignUpPage : AppCompatActivity() {
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,8 +36,8 @@ class SignUpPage : AppCompatActivity() {
         signupbtn.setOnClickListener {
 
             //Checking if any Field is Empty?
-            if (name.text.toString().trim()
-                    .isEmpty() || password.text.toString().trim().isEmpty()
+            if (name.text.toString().trim().isEmpty() || password.text.toString().trim()
+                    .isEmpty()
             ) {
                 Toast.makeText(this@SignUpPage, "Fill all Details Properly!!", Toast.LENGTH_SHORT)
                     .show()
@@ -47,8 +55,7 @@ class SignUpPage : AppCompatActivity() {
 
 
                 val sharedPreferences: SharedPreferences = this.getSharedPreferences(
-                    "sharedPref",
-                    Context.MODE_PRIVATE
+                    "sharedPref", Context.MODE_PRIVATE
                 )
                 val editor: SharedPreferences.Editor = sharedPreferences.edit()
                 editor.putString("username_key", str_username)
@@ -57,18 +64,14 @@ class SignUpPage : AppCompatActivity() {
                 editor.apply()
 
                 Toast.makeText(
-                    this@SignUpPage,
-                    "Sign-Up Successful! ",
-                    Toast.LENGTH_SHORT
+                    this@SignUpPage, "Sign-Up Successful! ", Toast.LENGTH_SHORT
+                ).show()
+                Toast.makeText(
+                    this@SignUpPage, "Please Note Down Your Username", Toast.LENGTH_SHORT
                 ).show()
                 Toast.makeText(
                     this@SignUpPage,
-                    "Please Note Down Your Username",
-                    Toast.LENGTH_SHORT
-                ).show()
-                Toast.makeText(
-                    this@SignUpPage,
-                    "You Will be Redirecting to Login After 10 Seconds!",
+                    "You Will be Redirecting to Login After 15 Seconds!",
                     Toast.LENGTH_LONG
                 ).show()
 
@@ -76,7 +79,7 @@ class SignUpPage : AppCompatActivity() {
                     val intent = Intent(this@SignUpPage, LoginPage::class.java)
                     startActivity(intent)
 
-                }, 5000)
+                }, 15000)
             }
         }
 
@@ -84,9 +87,7 @@ class SignUpPage : AppCompatActivity() {
         loginbtn.setOnClickListener {
             //Redirect to SignUp Page
             Toast.makeText(
-                this@SignUpPage,
-                "Moving to Login page",
-                Toast.LENGTH_SHORT
+                this@SignUpPage, "Moving to Login page", Toast.LENGTH_SHORT
             ).show()
             val intent = Intent(this@SignUpPage, LoginPage::class.java)
             startActivity(intent)

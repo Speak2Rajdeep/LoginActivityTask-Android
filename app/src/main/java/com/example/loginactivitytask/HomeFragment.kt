@@ -2,14 +2,14 @@ package com.example.loginactivitytask
 
 import android.annotation.SuppressLint
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
-import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import retrofit2.Call
 import retrofit2.Callback
@@ -23,10 +23,9 @@ private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
 
 /**
- * A simple [Fragment] subclass.
- * Use the [HomeFragment.newInstance] factory method to
- * create an instance of this fragment.
+ *  1. This Fragment shows Recycler View with Grid Layout.
  */
+
 class HomeFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
@@ -51,6 +50,7 @@ class HomeFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_home, container, false)
+
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -61,17 +61,16 @@ class HomeFragment : Fragment() {
         loading = view.findViewById(R.id.loading)
 
         recyclerView.apply {
-            val layoutManager = LinearLayoutManager(activity)
+            val layoutManager = GridLayoutManager(activity, 2)
             this.layoutManager = layoutManager
-            this.setHasFixedSize(true)
             myAdapter = MyAdapterHome(context, responseBody)
             this.adapter = myAdapter
             getMyData()
         }
     }
 
+    //This method fetches all the Data from the API through Retrofit Library
     private fun getMyData() {
-        //This method fetches all the Data from the API through Retrofit Library
         //Creating Retrofit Object
         val retrofitBuilder =
             Retrofit.Builder().addConverterFactory(GsonConverterFactory.create()).baseUrl(baseURL)

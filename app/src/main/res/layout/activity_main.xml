@@ -1,42 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:orientation="vertical"
     android:id="@+id/layoutV"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".MainActivity">
 
-
     <TextView
+        android:id="@+id/txt_welcome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/txt_welcome"
-        android:text="@string/welcome_str"
-        android:textSize="40sp"
-        android:textColor="@color/black"
         android:layout_gravity="center"
         android:paddingTop="270dp"
-        tools:ignore="MissingConstraints"/>
+        android:text="@string/welcome_str"
+        android:textColor="@color/black"
+        android:textSize="40sp"
+        tools:ignore="MissingConstraints" />
+
     <TextView
+        android:id="@+id/txt_to"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/txt_to"
-        android:text="@string/to_str"
-        android:textSize="40sp"
         android:layout_gravity="center"
+        android:text="@string/to_str"
         android:textColor="@color/black"
-        tools:ignore="MissingConstraints"/>
+        android:textSize="40sp"
+        tools:ignore="MissingConstraints" />
+
     <TextView
         android:id="@+id/txt_android"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:gravity="center"
         android:text="@string/android_str"
-        android:textSize="40sp"
-        android:layout_gravity="center"
         android:textColor="@color/black"
-        tools:ignore="MissingConstraints"/>
+        android:textSize="40sp"
+        tools:ignore="MissingConstraints" />
 
 </LinearLayout>

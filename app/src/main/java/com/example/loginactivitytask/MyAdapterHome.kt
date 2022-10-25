@@ -3,11 +3,15 @@ package com.example.loginactivitytask
 import android.annotation.SuppressLint
 import android.content.Context
 import android.view.LayoutInflater
-import android.view.Menu
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+
+/**
+ *  1. This Adapter Class is used by Home Fragment.
+ *  2. The Adapter Class provides basic Functionalities for showing data into RecyclerView form.
+ */
 
 class MyAdapterHome(val context: Context, val userList: List<MyDataItem>) :
     RecyclerView.Adapter<MyAdapterHome.ViewHolder>() {
