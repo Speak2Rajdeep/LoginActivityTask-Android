@@ -6,7 +6,7 @@
         android:icon="@drawable/ic_baseline_home_24"/>
     <item android:title="Document"
         android:id="@+id/documentmenu"
-        android:icon="@drawable/ic_baseline_document_scanner_24"/>
+        android:icon="@drawable/ic_baseline_document_scanner_24" />
     <item android:title="Profile"
         android:id="@+id/profilemenu"
         android:icon="@drawable/ic_baseline_person_24"/>

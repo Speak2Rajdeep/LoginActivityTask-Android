@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/cardview_shadow_start_color"
+    android:background="@color/white"
+
     tools:context=".HomeFragment">
 
     <ProgressBar
@@ -27,6 +28,8 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerhome"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager" />
+        android:layout_height="wrap_content"
+        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+        app:spanCount="2"
+        tools:listitem="@layout/single_row_home" />
 </FrameLayout>
