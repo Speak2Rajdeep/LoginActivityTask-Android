@@ -24,22 +24,16 @@ import com.example.loginactivitytask.databinding.ActivityTabLayoutBinding
 class TabLayout : AppCompatActivity() {
 
     private lateinit var binding: ActivityTabLayoutBinding
-    private lateinit var viewpager: ViewPager2
     private var previtem: MenuItem? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityTabLayoutBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        viewpager = findViewById(R.id.viewpager)
-        viewpager.adapter = PagerAdapter(this)
+        binding.viewpager.adapter = PagerAdapter(this)
 
         //this method Callback is used whenever there is a change in Fragment
-        viewpager.registerOnPageChangeCallback(object : OnPageChangeCallback() {
-            override fun onPageScrollStateChanged(state: Int) {
-                super.onPageScrollStateChanged(state)
-            }
-
+        binding.viewpager.registerOnPageChangeCallback(object : OnPageChangeCallback() {
             override fun onPageSelected(position: Int) {
                 super.onPageSelected(position)
                 if (previtem != null)
@@ -54,13 +48,13 @@ class TabLayout : AppCompatActivity() {
         binding.bottomnavigationView.setOnItemSelectedListener {
             when (it.itemId) {
                 R.id.homemenu -> {
-                    viewpager.currentItem = 0
+                    binding.viewpager.currentItem = 0
                 }
                 R.id.documentmenu -> {
-                    viewpager.currentItem = 1
+                    binding.viewpager.currentItem = 1
                 }
                 R.id.profilemenu -> {
-                    viewpager.currentItem = 2
+                    binding.viewpager.currentItem = 2
                 }
                 else -> {
                     Toast.makeText(
