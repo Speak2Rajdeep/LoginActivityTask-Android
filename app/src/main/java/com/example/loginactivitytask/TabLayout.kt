@@ -18,14 +18,13 @@ import com.example.loginactivitytask.databinding.ActivityTabLayoutBinding
  *  4. Documents Fragment shows data fetched from API through Retrofit in a RecyclerView Linear Layout.
  *  5. Profile Tab shows the Basic name and Username of User.
  *  6. By default, Home Tab will be Selected.
- *  7. Added ViewPager.
+ *  7. Added ViewPager & Pager Adapter.
  */
 
 class TabLayout : AppCompatActivity() {
 
     private lateinit var binding: ActivityTabLayoutBinding
     private lateinit var viewpager: ViewPager2
-    private lateinit var menu: Menu
     private var previtem: MenuItem? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
